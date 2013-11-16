@@ -67,6 +67,12 @@
                 android:summary="@string/adaptive_backlight_summary"
                 android:defaultValue="true" />
 
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="screen_off_animation"
+            android:title="@string/screen_off_animation_title"
+            android:summary="@string/screen_off_animation_summary"
+            android:defaultValue="true" />
+
         <!-- DeviceParts Device Specific Display settings -->
         <Preference
             android:key="advanced_display_settings"
