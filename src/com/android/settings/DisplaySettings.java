@@ -17,7 +17,7 @@
 package com.android.settings;
 
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
-import static android.provider.Settings.System.SCREEN_ANIMATION_STYLE;
+import static android.provider.Settings.System.SCREEN_OFF_ANIMATION;
 
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
@@ -67,13 +67,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
     private static final String KEY_ADVANCED_DISPLAY_SETTINGS = "advanced_display_settings";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
+    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
 
     private static final String CATEGORY_LIGHTS = "lights_prefs";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
-    private static final String KEY_SCREEN_ANIMATION_OFF = "screen_off_animation";
-    private static final String KEY_SCREEN_ANIMATION_STYLE = "screen_animation_style";
     private static final String PREF_SMART_COVER_CATEGORY = "smart_cover_category";
     private static final String PREF_SMART_COVER_WAKE = "smart_cover_wake";
 
@@ -82,8 +81,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAccelerometer;
     private FontDialogPreference mFontSizePref;
     private CheckBoxPreference mWakeWhenPluggedOrUnplugged;
-    private CheckBoxPreference mScreenOffAnimation;
-    private ListPreference mScreenAnimationStylePreference;
     private CheckBoxPreference mSmartCoverWake;
 
     private PreferenceScreen mNotificationPulse;
@@ -97,6 +94,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mAdaptiveBacklight;
     private CheckBoxPreference mTapToWake;
+
+    private ListPreference mScreenOffAnimationPreference;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -163,30 +162,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mWakeWhenPluggedOrUnplugged =
                 (CheckBoxPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
 
-        boolean allowsScreenOffAnimation = res.getBoolean(
-                com.android.internal.R.bool.config_screenOffAnimation);
-        boolean requiresFadeAnimation = res.getBoolean(
-                com.android.internal.R.bool.config_animateScreenLights);
-        mScreenOffAnimation = (CheckBoxPreference) findPreference(KEY_SCREEN_ANIMATION_OFF);
-        mScreenAnimationStylePreference =
-                (ListPreference) findPreference(KEY_SCREEN_ANIMATION_STYLE);
-
-        if (allowsScreenOffAnimation) {
-            if (!requiresFadeAnimation) {
-                final int currentAnimation =
-                        Settings.System.getInt(resolver, SCREEN_ANIMATION_STYLE, 0);
-                mScreenAnimationStylePreference.setValue(String.valueOf(currentAnimation));
-                mScreenAnimationStylePreference.setOnPreferenceChangeListener(this);
-                updateScreenAnimationStylePreferenceDescription(currentAnimation);
-            } else {
-                getPreferenceScreen().removePreference(mScreenAnimationStylePreference);
-                mScreenAnimationStylePreference.setValue(String.valueOf(1));
-            }
-        } else {
-            mScreenOffAnimation.setChecked(false);
-            getPreferenceScreen().removePreference(mScreenOffAnimation);
-            getPreferenceScreen().removePreference(mScreenAnimationStylePreference);
-        }
+        mScreenOffAnimationPreference = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
+        final int currentAnimation = Settings.System.getInt(resolver, SCREEN_OFF_ANIMATION,
+                1 /* CRT-off */);
+        mScreenOffAnimationPreference.setValue(String.valueOf(currentAnimation));
+        mScreenOffAnimationPreference.setOnPreferenceChangeListener(this);
+        updateScreenOffAnimationPreferenceDescription(currentAnimation);
 
         mSmartCoverWake = (CheckBoxPreference) findPreference(PREF_SMART_COVER_WAKE);
         mSmartCoverWake.setOnPreferenceChangeListener(this);
@@ -269,6 +250,24 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mDisplayRotationPreference.setSummary(summary);
     }
 
+    private void updateScreenOffAnimationPreferenceDescription(int currentAnim) {
+        ListPreference preference = mScreenOffAnimationPreference;
+        String summary;
+        if (currentAnim < 0) {
+            // Unsupported value
+            summary = "";
+        } else {
+            final CharSequence[] entries = preference.getEntries();
+            final CharSequence[] values = preference.getEntryValues();
+            if (entries == null || entries.length == 0) {
+                summary = "";
+            } else {
+                summary = entries[currentAnim].toString();
+            }
+        }
+        preference.setSummary(summary);
+    }
+
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
         String summary;
@@ -334,24 +333,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         screenTimeoutPreference.setEnabled(revisedEntries.size() > 0);
-    }
-
-    private void updateScreenAnimationStylePreferenceDescription(int currentAnimation) {
-        ListPreference preference = mScreenAnimationStylePreference;
-        String summary;
-        if (currentAnimation < 0) {
-            // Unsupported value
-            summary = "";
-        } else {
-            final CharSequence[] entries = preference.getEntries();
-            final CharSequence[] values = preference.getEntryValues();
-            if (entries == null || entries.length == 0) {
-                summary = "";
-            } else {
-                summary = entries[currentAnimation].toString();
-            }
-        }
-        preference.setSummary(summary);
     }
 
     @Override
@@ -504,13 +485,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
-        if (KEY_SCREEN_ANIMATION_STYLE.equals(key)) {
+        if (KEY_SCREEN_OFF_ANIMATION.equals(key)) {
             int value = Integer.parseInt((String) objValue);
             try {
-                Settings.System.putInt(getContentResolver(), SCREEN_ANIMATION_STYLE, value);
-                updateScreenAnimationStylePreferenceDescription(value);
+                Settings.System.putInt(getContentResolver(), SCREEN_OFF_ANIMATION, value);
+                updateScreenOffAnimationPreferenceDescription(value);
             } catch (NumberFormatException e) {
-                Log.e(TAG, "could not persist screen animation style setting", e);
+                Log.e(TAG, "could not persist screen-off animation setting", e);
             }
         } else if (preference == mSmartCoverWake) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
