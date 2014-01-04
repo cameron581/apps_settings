@@ -49,6 +49,11 @@
         android:fragment="com.android.settings.lego.WakeLockBlocker"
         android:title="@string/wakelock_blocker" />
 
+    <PreferenceScreen
+        android:key="interface_voice_tts"
+        android:fragment="com.android.settings.lego.DrivingMode"
+        android:title="@string/voice_tts_title" />
+
     <PreferenceCategory
             android:key="expanded_desktop_category"
             android:title="@string/power_menu_expanded_desktop" >
