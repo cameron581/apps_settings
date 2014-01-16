@@ -417,4 +417,7 @@
     <string name="flip_qs_tiles_title">Flip tiles</string>
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
+    <!-- Internal Memory Tile -->
+    <string name="internal_memory_tile">Internal Memory</string>
+
 </resources>
