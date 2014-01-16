@@ -38,6 +38,25 @@
     </Preference>
 
     <PreferenceCategory
+        android:key="back_to_kill"
+        android:title="@string/kill_app_longpress_back_title" >
+
+    <CheckBoxPreference
+            android:key="kill_app_longpress_back"
+            android:title="@string/kill_app_longpress_back"
+            android:summary="@string/kill_app_longpress_back_summary"/>
+
+    <ListPreference
+            android:key="kill_app_longpress_back_delay"
+            android:entries="@array/kill_app_longpress_back_delay_entries"
+            android:entryValues="@array/kill_app_longpress_back_delay_values"
+            android:title="@string/kill_app_longpress_back_delay_title"
+            android:summary="@string/kill_app_longpress_back_delay_summary"
+            android:dependency="kill_app_longpress_back" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="home_key"
         android:title="@string/hardware_keys_home_key_title" >
 
