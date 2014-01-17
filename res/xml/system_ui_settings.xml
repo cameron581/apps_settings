@@ -54,6 +54,11 @@
         android:fragment="com.android.settings.dokdo.ListviewAnimation"
         android:title="@string/listview_category" />
 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="overscroll_glow_color"
+        android:title="@string/overscroll_glow_title"
+        android:defaultValue="#ffffff" />
+
     <PreferenceCategory
             android:key="expanded_desktop_category"
             android:title="@string/power_menu_expanded_desktop" >
