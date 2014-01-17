@@ -45,6 +45,8 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
     private static final String OVERSCROLL_GLOW_COLOR = "overscroll_glow_color";
+    private static final String OVERSCROLL_PREF = "overscroll_effect";
+    private static final String OVERSCROLL_WEIGHT_PREF = "overscroll_weight";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
     // Enable/disable nav bar	
@@ -57,6 +59,8 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String KEY_HOME_ENABLED = "key_home_enabled";
 
     private ListPreference mExpandedDesktopPref;
+    private ListPreference mOverscrollPref;
+    private ListPreference mOverscrollWeightPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
     ColorPickerPreference mOverScrollGlowColor;
     private CheckBoxPreference mNavigationBarLeftPref;
@@ -83,6 +87,17 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         int defaultColor = Color.rgb(255, 255, 255);
         int intColor = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.OVERSCROLL_GLOW_COLOR, defaultColor);
         mOverScrollGlowColor.setNewPreviewColor(intColor);
+
+        mOverscrollPref = (ListPreference) findPreference(OVERSCROLL_PREF);
+        int overscrollEffect = Settings.System.getInt(getContentResolver(),
+                Settings.System.OVERSCROLL_EFFECT, 1);
+        mOverscrollPref.setValue(String.valueOf(overscrollEffect));
+        mOverscrollPref.setOnPreferenceChangeListener(this);
+
+        mOverscrollWeightPref = (ListPreference) findPreference(OVERSCROLL_WEIGHT_PREF);
+        int overscrollWeight = Settings.System.getInt(getContentResolver(), Settings.System.OVERSCROLL_WEIGHT, 5);
+        mOverscrollWeightPref.setValue(String.valueOf(overscrollWeight));
+        mOverscrollWeightPref.setOnPreferenceChangeListener(this);
 
         // Expanded desktop
         mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
@@ -173,10 +188,10 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
                 Settings.System.KEY_HOME_ENABLED, 1);
     }
 
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean value;
         if (preference == mExpandedDesktopPref) {
-            int expandedDesktopValue = Integer.valueOf((String) objValue);
+            int expandedDesktopValue = Integer.valueOf((String) newValue);
             updateExpandedDesktop(expandedDesktopValue);
             return true;
         } else if (preference == mOverScrollGlowColor) {
@@ -187,8 +202,17 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.OVERSCROLL_GLOW_COLOR, intHex);
             return true;
+        } else if (preference == mOverscrollPref) {
+            int overscrollEffect = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.OVERSCROLL_EFFECT, overscrollEffect);
+            return true;
+        } else if (preference == mOverscrollWeightPref) {
+            int overscrollWeight = Integer.valueOf((String)newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.OVERSCROLL_WEIGHT, overscrollWeight);
+            return true;
         } else if (preference == mExpandedDesktopNoNavbarPref) {
-            value = (Boolean) objValue;
+            value = (Boolean) newValue;
             updateExpandedDesktop(value ? 2 : 0);
             return true;
 	// Enable/disbale nav bar (used in custom nav bar dimensions)

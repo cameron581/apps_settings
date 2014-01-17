@@ -54,6 +54,22 @@
         android:fragment="com.android.settings.dokdo.ListviewAnimation"
         android:title="@string/listview_category" />
 
+    <ListPreference
+        android:key="overscroll_effect"
+        android:dialogTitle="@string/overscroll_title"
+        android:title="@string/overscroll_title"
+        android:summary="@string/overscroll_summary"
+        android:entries="@array/overscroll_effect_entries"
+        android:entryValues="@array/overscroll_effect_values" />
+
+    <ListPreference
+        android:key="overscroll_weight"
+        android:dialogTitle="@string/overscroll_weight_title"
+        android:title="@string/overscroll_weight_title"
+        android:summary="@string/overscroll_weight_summary"
+        android:entries="@array/overscroll_weight_entries"
+        android:entryValues="@array/overscroll_weight_values" />
+
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="overscroll_glow_color"
         android:title="@string/overscroll_glow_title"
