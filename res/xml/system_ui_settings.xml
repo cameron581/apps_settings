@@ -127,6 +127,12 @@
     <PreferenceCategory android:title="@string/animations_settings_category">
 
     <PreferenceScreen
+        android:key="progressbar_settings"
+        android:fragment="com.android.settings.cyanogenmod.ProgressBar"
+        android:title="@string/progressbar_title" >
+    </PreferenceScreen>
+
+    <PreferenceScreen
         android:key="listview"
         android:fragment="com.android.settings.lego.ListviewAnimation"
         android:title="@string/listview_category" />
