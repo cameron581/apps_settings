@@ -27,6 +27,14 @@ import com.android.internal.widget.LockPatternUtils;
 public class ChooseLockPatternSize extends PreferenceActivity {
 
     @Override
+    protected boolean isValidFragment (String fragmentName) {
+        if (ChooseLockPatternSizeFragment.class.getName().equals(fragmentName)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public Intent getIntent() {
         Intent modIntent = new Intent(super.getIntent());
         modIntent.putExtra(EXTRA_SHOW_FRAGMENT, ChooseLockPatternSizeFragment.class.getName());
@@ -72,7 +80,8 @@ public class ChooseLockPatternSize extends PreferenceActivity {
             final boolean isFallback = getActivity().getIntent()
                 .getBooleanExtra(LockPatternUtils.LOCKSCREEN_BIOMETRIC_WEAK_FALLBACK, false);
 
-            Intent intent = new Intent(getActivity(), ChooseLockPattern.class);
+            Intent intent = new Intent();
+            intent.setClass(getActivity(), ChooseLockPattern.class);
             intent.putExtra("pattern_size", patternSize);
             intent.putExtra("key_lock_method", "pattern");
             intent.putExtra("confirm_credentials", false);
