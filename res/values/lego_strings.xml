@@ -640,4 +640,8 @@
     <!-- Anonymous stats -->
     <string name="rominfo_settings_list_item_title">Lego Rom Statistics</string>
     <string name="rominfo_settings_list_item_summary">Help make Lego better by opting into anonymous statistics reporting</string>
+
+    <!--StatusBar Color -->
+    <string name="status_bar_clock_color">StatusBar Clock Color</string>
+
 </resources>
