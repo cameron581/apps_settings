@@ -523,4 +523,7 @@
     <!-- Screen off animation -->
     <string name="screen_off_animation">Screen-off animation</string>
 
+    <!--StatusBar Color -->
+    <string name="status_bar_show_network_stats_color_title">Traffic meter Color</string>
+
 </resources>

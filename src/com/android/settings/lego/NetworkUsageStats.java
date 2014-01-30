@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
+import com.android.settings.cyanogenmod.colorpicker.ColorPickerPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -19,10 +20,12 @@ public class NetworkUsageStats extends SettingsPreferenceFragment implements OnP
 
     private static final String STATUS_BAR_NETWORK_STATS = "status_bar_show_network_stats";
     private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_status_update";
-    
+    private static final String STATUS_BAR_SHOW_NETWORK_STATS_COLOR = "status_bar_show_network_stats_color";
+
     private ListPreference mStatusBarNetStatsUpdate;
     private CheckBoxPreference mStatusBarNetworkStats;
-    
+    private ColorPickerPreference mStatusBarNetStatsColor;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,11 @@ public class NetworkUsageStats extends SettingsPreferenceFragment implements OnP
         mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
         mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
 
+	mStatusBarNetStatsColor = (ColorPickerPreference) findPreference(STATUS_BAR_SHOW_NETWORK_STATS_COLOR);
+	int Color = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUS_BAR_SHOW_NETWORK_STATS_COLOR, -1);
+	mStatusBarNetStatsColor.setNewPreviewColor(Color);
+	mStatusBarNetStatsColor.setOnPreferenceChangeListener(this);
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -53,7 +61,10 @@ public class NetworkUsageStats extends SettingsPreferenceFragment implements OnP
                     Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
             mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntries()[index]);
             return true;
-        }
+        } else if (preference == mStatusBarNetStatsColor) {
+	    int color = ((Integer)newValue).intValue();
+	    Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_SHOW_NETWORK_STATS_COLOR, color);
+	}
         return false;
     }
 
