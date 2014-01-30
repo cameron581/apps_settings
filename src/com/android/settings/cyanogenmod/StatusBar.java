@@ -17,7 +17,6 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -27,7 +26,6 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -41,12 +39,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private static final String STATUS_BAR_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_STYLE_TEXT = "6";
-    private static final String STATUS_BAR_CLOCK_COLOR = "status_bar_clock_color";
 
     private ListPreference mStatusBarBattery;
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarCmSignal;
-    private ColorPickerPreference mStatusBarClockColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,13 +86,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         }
 
         enableStatusBarBatteryDependents(mStatusBarBattery.getValue());
+    }
 
-        int defaultColor = Color.rgb(255, 255, 255);
-        mStatusBarClockColor = (ColorPickerPreference) findPreference(STATUS_BAR_CLOCK_COLOR);
-        int Color = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.STATUS_BAR_CLOCK_COLOR, defaultColor);
-        mStatusBarClockColor.setNewPreviewColor(Color);
-        mStatusBarClockColor.setOnPreferenceChangeListener(this);
-	}
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
@@ -113,11 +104,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarCmSignal.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
-            return true;
-        } else if ( preference == mStatusBarClockColor) {
-            int color = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUS_BAR_CLOCK_COLOR, color);
             return true;
         }
 

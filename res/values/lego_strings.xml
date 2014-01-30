@@ -523,9 +523,48 @@
 
     <!-- Screen off animation -->
     <string name="screen_off_animation">Screen-off animation</string>
+    
+    <!-- Volume Steps -->
+    <string name="volume_steps_title">Volume Steps</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+    <string name="volume_steps_alarm_title">Alarm</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Music</string>
+    <string name="volume_steps_notification_title">Notification</string>
+    <string name="volume_steps_ring_title">Ringer</string>
+    <string name="volume_steps_system_title">System</string>
+    <string name="volume_steps_voice_call_title">Voice Call</string>
 
-    <!--StatusBar Color -->
-    <string name="status_bar_show_network_stats_color_title">Traffic meter Color</string>
+    <!-- Recent panel -->
+    <string name="slim_recent_panel_category">Slim recent apps panel</string>
+    <string name="recent_panel_scale_title">Size</string>
+    <string name="recent_panel_scale_summary">Recent apps panel size in percent</string>
+    <string name="recent_panel_100">100% (default)</string>
+    <string name="recent_panel_85">85%</string>
+    <string name="recent_panel_70">70%</string>
+
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
+    <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>
+
+    <!-- NavBar long press actions -->
+    <string name="navbar_long_press_title">Long press actions</string>
+    <string name="recent_long_press_title">Recent long press actions</string>
+    <string name="recent_long_press_none">None</string>
+    <string name="recent_long_press_last_app">Last app</string>
+    <string name="recent_long_press_screenshot">Screenshot</string>
+    <string name="recent_long_press_kill_app">Kill app</string>
+    <string name="recent_long_press_notif_panel">Notifications panel</string>
+    <string name="recent_long_press_qs_panel">QS panel</string>
+    <string name="recent_long_press_power_menu">Power menu</string>
+
+    <!-- Notifications light with screen on -->
+    <string name="notification_light_screen_on_title">Show when screen is on</string>
 
     <!-- Smooth ProgressBar -->
     <string name="progressbar_title">Custom ProgressBar</string>
@@ -643,5 +682,7 @@
 
     <!--StatusBar Color -->
     <string name="status_bar_clock_color">StatusBar Clock Color</string>
+    <string name="status_bar_show_network_stats_color_title">Traffic meter Color</string>
+    <string name="status_bar_color_setting">Color Settings</string>
 
 </resources>
