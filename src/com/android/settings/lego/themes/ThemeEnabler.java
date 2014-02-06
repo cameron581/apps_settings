@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.android.settings.crdroid.themes;
+package com.android.settings.lego.themes;
 
 import android.content.Context;
 import android.content.res.Configuration;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.android.internal.util.crdroid.TRDSConstant;
-import com.android.internal.util.crdroid.TRDSActions;
+import com.android.internal.util.lego.TRDSConstant;
+import com.android.internal.util.lego.TRDSActions;
 
 import com.android.settings.R;
 

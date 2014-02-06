@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.crdroid.themes;
+package com.android.settings.lego.themes;
 
 import android.app.ActionBar;
 import android.app.Activity;
