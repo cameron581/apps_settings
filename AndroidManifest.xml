@@ -1755,6 +1755,8 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+        <activity android:name=".du.ScreenStateToggles" />
+
         <!-- CyanogenMod activities Start -->
         <activity android:name="Settings$SystemSettingsActivity"
                 android:label="@string/system_settings_title"
