@@ -51,6 +51,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_SEE_THROUGH = "see_through";
     private static final String KEY_BLUR_RADIUS = "lockscreen_blur_radius";
     private static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+    private static final String KEY_LOCKSCREEN_GLOWPAD_DOUBLETAP = "glowpad_doubletap_option";
+    private static final String KEY_LOCKSCREEN_GLOWPAD = "glowpad_doubletap";
 
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mEnableKeyguardWidgets;
@@ -58,6 +60,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSeeThrough;
     private SeekBarPreferenceCHOS mBlurRadius;
     private CheckBoxPreference mLockBeforeUnlock;
+    private ListPreference mGlowpadOption;
+    private CheckBoxPreference mGlowpadDoubletap;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -129,6 +133,15 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             widgetsCategory.removePreference(
                     findPreference(Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS));
         }
+
+	mGlowpadDoubletap = (CheckBoxPreference)findPreference(KEY_LOCKSCREEN_GLOWPAD);
+	mGlowpadDoubletap.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.DOUBLE_TAP_GLOWPAD_GESTURE, 0) == 1);
+
+	mGlowpadOption = (ListPreference)findPreference(KEY_LOCKSCREEN_GLOWPAD_DOUBLETAP);
+	int CurrentGlowpadOption = Settings.System.getInt(getContentResolver(), Settings.System.LOCKSCREEN_GLOWPAD_DOUBLETAP_OPTION, 0);
+        mGlowpadOption.setSummary(mGlowpadOption.getEntries()[CurrentGlowpadOption]);
+	mGlowpadOption.setValueIndex(CurrentGlowpadOption);
+	mGlowpadOption.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -170,6 +183,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (preference == mLockBeforeUnlock) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.LOCK_BEFORE_UNLOCK,
                     mLockBeforeUnlock.isChecked() ? 1 : 0);
+	} else if (KEY_LOCKSCREEN_GLOWPAD.equals(key)) {
+	    boolean value = mGlowpadDoubletap.isChecked();
+	    Settings.System.putInt(getContentResolver(),
+		    Settings.System.DOUBLE_TAP_GLOWPAD_GESTURE, value ? 1 : 0);
+	    return true;
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -189,6 +207,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     Settings.System.putInt(getContentResolver(),
             Settings.System.LOCKSCREEN_BLUR_RADIUS, (Integer) objValue);
             return true;
+	} else if (preference == mGlowpadOption) {
+	    int index = mGlowpadOption.findIndexOfValue((String) objValue);
+	    Settings.System.putString(cr, Settings.System.LOCKSCREEN_GLOWPAD_DOUBLETAP_OPTION, (String) objValue);
+	    mGlowpadOption.setSummary(mGlowpadOption.getEntries()[index]);
+	    return true;
         }
 
         return false;

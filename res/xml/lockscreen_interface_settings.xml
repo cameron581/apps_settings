@@ -107,4 +107,21 @@
             android:title="@string/lockscreen_maximize_widgets_title" />
 
     </PreferenceCategory>
+  
+    <PreferenceCategory
+	android:title="@string/lockscreen_glowpad_doubletap_gesture" >
+
+    <CheckBoxPreference
+	android:key="glowpad_doubletap"
+	android:title="@string/lockscreen_glowpad_doubletap_checkbox_title" />
+
+    <ListPreference
+	android:key="glowpad_doubletap_option"
+	android:title="@string/lockscreen_glowpad_doubletap_title"
+	android:entries="@array/glowpad_doubletap_option_entries"
+	android:entryValues="@array/glowpad_doubletap_option_values"
+	android:dependency="glowpad_doubletap"
+	android:persistent="false" />
+     </PreferenceCategory>
+
 </PreferenceScreen>
