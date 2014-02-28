@@ -649,7 +649,7 @@ public class Settings extends PreferenceActivity
                     }
                 }
             } else if (id == R.id.development_settings
-                    || id == R.id.performance_settings) {
+                    || id == R.id.performance_controls) {
                 if (!showDev) {
                     target.remove(i);
                 }
