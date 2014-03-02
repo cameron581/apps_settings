@@ -109,7 +109,7 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
-import com.android.settings.crdroid.themes.ThemeEnabler;
+import com.android.settings.lego.themes.ThemeEnabler;
 
 import java.util.ArrayList;
 import java.util.Collections;

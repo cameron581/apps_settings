@@ -61,7 +61,7 @@
             android:title="@string/see_through_title"
             android:summary="@string/see_through_summary" />
 
-        <com.android.settings.crdroid.SeekBarPreferenceCHOS
+        <com.android.settings.lego.SeekBarPreferenceCHOS
             android:key="lockscreen_blur_radius"
             android:title="@string/blur_radius_title"
             android:summary="@string/blur_radius_summary"
@@ -74,7 +74,7 @@
 
         <PreferenceScreen
             android:title="@string/lockscreen_notifications"
-            android:fragment="com.android.settings.crdroid.LockscreenNotifications"
+            android:fragment="com.android.settings.lego.LockscreenNotifications"
             android:summary="@string/lockscreen_notifications_summary" />
 
     </PreferenceCategory>

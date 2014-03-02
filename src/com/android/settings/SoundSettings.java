@@ -56,7 +56,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
-import com.android.settings.crdroid.SeekBarPreferenceCHOS;
+import com.android.settings.lego.SeekBarPreferenceCHOS;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {

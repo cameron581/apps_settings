@@ -23,7 +23,7 @@
 
         <PreferenceScreen
             android:key="quicksettings_tiles_style"
-            android:fragment="com.android.settings.crdroid.QuickSettingsTilesStyle"
+            android:fragment="com.android.settings.lego.QuickSettingsTilesStyle"
             android:title="@string/quicksettings_tiles_style"
             android:summary="@string/summary_quicksettings_tiles_style" />  
 

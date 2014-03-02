@@ -19,7 +19,7 @@
     android:title="@string/status_bar_title">
 
     <PreferenceScreen
-        android:fragment="com.android.settings.crdroid.StatusBarClockStyle"
+        android:fragment="com.android.settings.lego.StatusBarClockStyle"
         android:key="clock_style_pref"
         android:title="@string/status_bar_clock" />
 

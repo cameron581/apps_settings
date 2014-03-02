@@ -103,7 +103,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String CATEGORY_ADDITIONAL = "additional_options";
     
-    // crDroid Additions
+    // Lego Additions
     private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
     private PackageManager mPM;

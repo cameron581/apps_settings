@@ -76,7 +76,7 @@
 
     <PreferenceScreen
         android:key="keyboard_input_settings"
-        android:fragment="com.android.settings.crdroid.InputMethodsSettings"
+        android:fragment="com.android.settings.lego.InputMethodsSettings"
         android:title="@string/title_keyboard_input" />
 
     <PreferenceCategory android:key="voice_category"

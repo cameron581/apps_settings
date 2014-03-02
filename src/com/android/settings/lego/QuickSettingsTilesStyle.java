@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.crdroid;
+package com.android.settings.lego;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -35,11 +35,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.android.internal.util.crdroid.DeviceUtils;
+import com.android.internal.util.lego.DeviceUtils;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.crdroid.SeekBarPreference;
+import com.android.settings.lego.SeekBarPreference;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
