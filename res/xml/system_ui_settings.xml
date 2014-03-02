@@ -20,6 +20,11 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
+        android:key="halo_settings"
+        android:fragment="com.android.settings.lego.Halo"
+        android:title="@string/halo_settings_title" />
+
+    <PreferenceScreen
         android:key="status_bar"
         android:fragment="com.android.settings.cyanogenmod.StatusBar"
         android:title="@string/status_bar_title" />
@@ -38,6 +43,11 @@
         android:key="recent_panel"
         android:fragment="com.android.settings.lego.RecentPanelSettings"
         android:title="@string/recent_panel_settings_title" />
+
+    <PreferenceScreen
+        android:key="wakelock_blocker"
+        android:fragment="com.android.settings.lego.WakeLockBlocker"
+        android:title="@string/wakelock_blocker" />
 
     <PreferenceCategory
             android:key="expanded_desktop_category"

@@ -2,13 +2,10 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-<<<<<<< HEAD:res/values/lego_strings.xml
-=======
-    <!-- About phone screen, crDroid version -->
-    <string name="crdroid_version_title">crDroid Simple version</string>
-    <string name="crdroid_version_default">Build 14</string>
+    <!-- Settings Headers -->
+    <string name="header_category_lego">Lego Personalization</string>
+    <string name="header_category_legoadvanced">Lego Advanced</string>
 
->>>>>>> 4b102bf... Custom clear recents button (2/2):res/values/cr_strings.xml
     <!-- General strings -->
     <string name="default_string">Default</string>
     <string name="recent_panel_settings_title" >Recent panel settings</string>
@@ -17,7 +14,7 @@
     <string name="disabled">Disabled</string>
 
     <!-- Advanced settings -->
-    <string name="advanced_options_settings_title">Advanced</string>
+    <string name="advanced_options_settings_title">MediaScanner</string>
 
     <!-- Halo -->
     <string name="halo_settings_title">Halo</string>
