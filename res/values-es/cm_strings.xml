@@ -370,7 +370,7 @@ podrás crear una nueva línea con el fin de insertar puntos de control adiciona
     <string name="quiet_hours_ringer_mute_all">Silenciar todas las llamadas</string>
     <string name="start_time_title">Inicio</string>
     <string name="end_time_title">Fin</string>
-    <string name="mod_version">Versión CyanogenMod</string>
+    <string name="mod_version">Versión Lego</string>
     <string name="mod_version_default">Desconocida</string>
     <string name="build_date">Fecha de compilación</string>
     <string name="cpu_info">CPU</string>
