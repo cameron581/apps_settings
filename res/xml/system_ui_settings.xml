@@ -49,6 +49,11 @@
         android:fragment="com.android.settings.lego.WakeLockBlocker"
         android:title="@string/wakelock_blocker" />
 
+    <PreferenceScreen
+        android:key="listview"
+        android:fragment="com.android.settings.dokdo.ListviewAnimation"
+        android:title="@string/listview_category" />
+
     <PreferenceCategory
             android:key="expanded_desktop_category"
             android:title="@string/power_menu_expanded_desktop" >
