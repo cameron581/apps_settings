@@ -30,6 +30,12 @@
             android:entries="@array/media_scanner_on_boot_entries"
             android:entryValues="@array/media_scanner_on_boot_values" />
 
+    <PreferenceScreen
+        android:id="@+id/system_app_remover"
+        android:fragment="com.android.settings.lego.SystemappRemover"
+        android:title="@string/system_app_remover_title"
+        android:summary="@string/system_app_remover_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

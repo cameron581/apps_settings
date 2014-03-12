@@ -14,7 +14,7 @@
     <string name="disabled">Disabled</string>
 
     <!-- Advanced settings -->
-    <string name="advanced_options_settings_title">MediaScanner</string>
+    <string name="advanced_options_settings_title">Advanced</string>
 
     <!-- Halo -->
     <string name="halo_settings_title">Halo</string>

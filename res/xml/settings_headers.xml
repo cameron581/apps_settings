@@ -127,6 +127,13 @@
             android:targetPackage="com.dsht.kerneltweaker" />
 	</header>
 
+    <!-- Advanced options -->
+    <header
+        android:id="@+id/advanced_options_settings"
+        android:fragment="com.android.settings.lego.AdvancedSettings"
+        android:icon="@drawable/ic_settings_advanced"
+        android:title="@string/advanced_options_settings_title" />
+
     <!-- CyanogenMod Privacy Settings -->
     <!-- This is the 'real' Privacy items and includes Privacy Guard, Blacklist & WhisperPush -->
     <header
@@ -141,13 +148,6 @@
         android:fragment="com.android.settings.cyanogenmod.superuser.PolicyNativeFragment"
         android:icon="@drawable/ic_action_permission"
         android:title="@string/superuser" />
-
-    <!-- Advanced options -->
-    <header
-        android:id="@+id/advanced_options_settings"
-        android:fragment="com.android.settings.lego.AdvancedSettings"
-        android:icon="@drawable/ic_settings_advanced"
-        android:title="@string/advanced_options_settings_title" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
