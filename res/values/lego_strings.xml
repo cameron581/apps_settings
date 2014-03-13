@@ -12,6 +12,7 @@
     <string name="reset">Reset</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
+    <string name="animations_settings_category">Animations</string>
 
     <!-- Advanced settings -->
     <string name="advanced_options_settings_title">Advanced</string>

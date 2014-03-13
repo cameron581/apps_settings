@@ -49,32 +49,6 @@
         android:fragment="com.android.settings.lego.WakeLockBlocker"
         android:title="@string/wakelock_blocker" />
 
-    <PreferenceScreen
-        android:key="listview"
-        android:fragment="com.android.settings.dokdo.ListviewAnimation"
-        android:title="@string/listview_category" />
-
-    <ListPreference
-        android:key="overscroll_effect"
-        android:dialogTitle="@string/overscroll_title"
-        android:title="@string/overscroll_title"
-        android:summary="@string/overscroll_summary"
-        android:entries="@array/overscroll_effect_entries"
-        android:entryValues="@array/overscroll_effect_values" />
-
-    <ListPreference
-        android:key="overscroll_weight"
-        android:dialogTitle="@string/overscroll_weight_title"
-        android:title="@string/overscroll_weight_title"
-        android:summary="@string/overscroll_weight_summary"
-        android:entries="@array/overscroll_weight_entries"
-        android:entryValues="@array/overscroll_weight_values" />
-
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
-        android:key="overscroll_glow_color"
-        android:title="@string/overscroll_glow_title"
-        android:defaultValue="#ffffff" />
-
     <PreferenceCategory
             android:key="expanded_desktop_category"
             android:title="@string/power_menu_expanded_desktop" >
@@ -147,6 +121,43 @@
             android:summary="@string/navigation_bar_left_summary"
             android:defaultValue="false"
             android:dependency="enable_nav_bar" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/animations_settings_category">
+
+    <PreferenceScreen
+        android:key="listview"
+        android:fragment="com.android.settings.lego.ListviewAnimation"
+        android:title="@string/listview_category" />
+
+    <ListPreference
+        android:key="overscroll_effect"
+        android:dialogTitle="@string/overscroll_title"
+        android:title="@string/overscroll_title"
+        android:summary="@string/overscroll_summary"
+        android:entries="@array/overscroll_effect_entries"
+        android:entryValues="@array/overscroll_effect_values" />
+
+    <ListPreference
+        android:key="overscroll_weight"
+        android:dialogTitle="@string/overscroll_weight_title"
+        android:title="@string/overscroll_weight_title"
+        android:summary="@string/overscroll_weight_summary"
+        android:entries="@array/overscroll_weight_entries"
+        android:entryValues="@array/overscroll_weight_values" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="overscroll_glow_color"
+        android:title="@string/overscroll_glow_title"
+        android:defaultValue="#ffffff" />
+
+    <ListPreference
+        android:key="toast_animation"
+        android:title="@string/toast_animation_title"
+        android:entries="@array/toast_animation_entries"
+        android:entryValues="@array/toast_animation_values"
+        android:persistent="false" />
 
     </PreferenceCategory>
 
