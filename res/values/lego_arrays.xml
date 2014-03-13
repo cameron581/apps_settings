@@ -446,6 +446,7 @@
         <item>2000</item>
         <item>3000</item>
         <item>4000</item>
+    </string-array>
 
     <string-array name="slimsizer_profile_array">
         <item >Load Profile</item>
