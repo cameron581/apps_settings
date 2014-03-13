@@ -32,7 +32,7 @@ import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import net.margaritov.preference.colorpicker.ColorPickerPreference
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.settings.Utils;
 
 public class SystemUiSettings extends SettingsPreferenceFragment  implements
