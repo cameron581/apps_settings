@@ -217,10 +217,10 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
             return true;
 	// Enable/disbale nav bar (used in custom nav bar dimensions)
 	} else if (preference == mEnableNavigationBar) {
-            value = (Boolean) objValue;
+            value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW,
-                    ((Boolean) objValue) ? 1 : 0);
+                    ((Boolean) newValue) ? 1 : 0);
             updateNavbarPreferences((Boolean) value);
             if (value) {
                 enableKeysPrefs();
