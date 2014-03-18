@@ -128,7 +128,7 @@
 
     <PreferenceScreen
         android:key="progressbar_settings"
-        android:fragment="com.android.settings.cyanogenmod.ProgressBar"
+        android:fragment="com.android.settings.lego.ProgressBar"
         android:title="@string/progressbar_title" >
     </PreferenceScreen>
 
