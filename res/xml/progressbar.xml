@@ -50,7 +50,7 @@
             settings:unitsRight="dp"
             android:defaultValue="4" />
 
-        <com.android.settings.cyanogenmod.SeekBarPreference
+        <com.android.settings.lego.SeekBarPreference
             android:key="progressbar_length"
             android:persistent="false"
             android:title="@string/progressbar_length_title"
