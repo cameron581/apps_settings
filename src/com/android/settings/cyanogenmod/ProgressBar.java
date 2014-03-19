@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.lego;
+package com.android.settings.cyanogenmod;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;
