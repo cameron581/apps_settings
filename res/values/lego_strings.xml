@@ -634,12 +634,12 @@
     <string name="lock_pattern_size_6">6x6</string>
 
     <!-- OTA App -->
-    <string name="ota_app">Lego Updates</string>
-    <string name="ota_app_summary">Check for ROM updates</string>
+    <string name="ota_app">Lego updates</string>
+    <string name="ota_app_summary">Check for updates</string>
 
     <!-- Anonymous stats -->
-    <string name="rominfo_settings_list_item_title">Lego Rom Statistics</string>
-    <string name="rominfo_settings_list_item_summary">Help make Lego better by opting into anonymous statistics reporting</string>
+    <string name="rominfo_settings_list_item_title">Lego stats</string>
+    <string name="rominfo_settings_list_item_summary">Help make lego better by opting into anonymous statistics reporting</string>
 
     <!--StatusBar Color -->
     <string name="status_bar_clock_color">StatusBar Clock Color</string>
