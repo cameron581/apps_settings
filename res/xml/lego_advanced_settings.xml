@@ -36,6 +36,11 @@
         android:title="@string/system_app_remover_title"
         android:summary="@string/system_app_remover_summary" />
 
+    <com.android.settings.lego.SystemCheckBoxPreference
+        android:key="disable_fc_notifications"
+        android:title="@string/disable_fc_notifications_title"
+        android:summary="@string/disable_fc_notifications_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

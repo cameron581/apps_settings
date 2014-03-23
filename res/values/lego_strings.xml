@@ -692,4 +692,8 @@
     <string name="lockscreen_glowpad_doubletap_sleep">Sleep</string>
     <string name="lockscreen_glowpad_doubletap_torch">Torch</string>
 
+    <!-- Text for forcing expanded notifications -->
+    <string name="disable_fc_notifications_title">Diable FC Notifications</string>
+    <string name="disable_fc_notifications_summary">This will hide all force close notificaitons</string>
+
 </resources>
