@@ -28,7 +28,7 @@
         android:summaryOff="@string/voice_tts_notification_summary_off"
         android:summaryOn="@string/voice_tts_notification_summary_on" />
 
-    <com.android.settings.lego.SeekBarPreference
+    <com.android.settings.lego.SeekBarPreferenceCHOS
         android:key="voice_tts_volume"
         android:dependency="voice_tts"
         android:persistent="false"
