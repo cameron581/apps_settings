@@ -35,11 +35,6 @@
         android:layout_marginStart="6dip"
         android:layout_marginEnd="6dip"
         android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/ic_dt_suspend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
     </LinearLayout>
 
     <RelativeLayout
